@@ -1,73 +1,51 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class StatusEffectController : MonoBehaviour
 {
-    // Start is called before the first frame update
-        #region Datamembers
+    [SerializeField] private Material flashMaterial;
+    [SerializeField] private int flashCount = 3;
 
-        #region Editor Settings
+    private SpriteRenderer spriteRenderer;
+    private Material originalMaterial;
+    private Coroutine flashRoutine;
 
-        [Tooltip("Material to switch to during the flash.")]
-        [SerializeField] private Material flashMaterial;
+    #region Unity Callbacks
 
-        [Tooltip("Duration of the flash.")]
-        [SerializeField] private float duration;
+    void Start()
+    {
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        originalMaterial = spriteRenderer.material;
+        flashMaterial = new Material(flashMaterial);
+    }
 
-        #endregion
-        #region Private Fields
+    #endregion
 
-        // The SpriteRenderer that should flash.
-        private SpriteRenderer spriteRenderer;
-
-        // The material that was in use, when the script started.
-        private Material originalMaterial;
-
-        // The currently running coroutine.
-        private Coroutine flashRoutine;
-
-        #endregion
-
-        #endregion
-
-
-        #region Methods
-
-        #region Unity Callbacks
-
-        void Start()
+    public void Flash(Color color, int count = 1, float duration = 0.1f)
+    {
+        if (flashRoutine != null)
         {
-            spriteRenderer = GetComponent<SpriteRenderer>();
-            originalMaterial = spriteRenderer.material;
-            flashMaterial = new Material(flashMaterial);
+            StopCoroutine(flashRoutine);
         }
 
-        #endregion
+        flashCount = count;
+        flashRoutine = StartCoroutine(FlashRoutine(color, duration));
+    }
 
-        public void Flash(Color color)
+    private IEnumerator FlashRoutine(Color color, float duration)
+    {
+        for (int i = 0; i < flashCount; i++)
         {
-            if (flashRoutine != null)
-            {
-                StopCoroutine(flashRoutine);
-            }
-            
-            flashRoutine = StartCoroutine(FlashRoutine(color));
-        }
-
-        private IEnumerator FlashRoutine(Color color)
-        {
-
             spriteRenderer.material = flashMaterial;
-            
             flashMaterial.color = color;
             
             yield return new WaitForSeconds(duration);
             
             spriteRenderer.material = originalMaterial;
             
-            flashRoutine = null;
+            yield return new WaitForSeconds(duration);
         }
-
-        #endregion
+        
+        flashRoutine = null;
+    }
 }

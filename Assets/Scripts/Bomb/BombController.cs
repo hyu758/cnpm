@@ -47,7 +47,7 @@ public class BombController : MonoBehaviour
 
     private IEnumerator PlaceBomb()
     {
-        GetComponent<PlayerStatus>().PlaceBomb();
+        PlayerStatus.Instance.PlaceBomb();
 
         Vector2 pos = this.transform.position;
         pos.x = Mathf.Round(pos.x);
@@ -59,7 +59,7 @@ public class BombController : MonoBehaviour
         yield return new WaitForSeconds(bombFuseTime);
 
         Destroy(bomb);
-        GetComponent<PlayerStatus>().PlusBomb();
+        PlayerStatus.Instance.PlusBomb();
 
         bombRemaining = Mathf.Min(bombRemaining+1, bombAmount);
         SetupExplode(bomb.transform.position);

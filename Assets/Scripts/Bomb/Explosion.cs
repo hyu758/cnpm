@@ -35,7 +35,12 @@ public class Explosion : MonoBehaviour
 
         if (other.CompareTag("Player"))
         {
-            other.GetComponent<PlayerStatus>().HandleHurt(1);
+            PlayerStatus.Instance.HandleHurt(1);
+        }
+
+        if (other.CompareTag("Enemy"))
+        {
+            other.GetComponent<EnemyStatus>().HandleHurt(1);
         }
         
     }

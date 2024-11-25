@@ -185,14 +185,14 @@ public class PlayerStatus : Subjects
         }
         
         HP = Mathf.Max(HP-damage, 0);
-        _statusEffectController.Flash(Color.red);
+        _statusEffectController.Flash(Color.red, 4, 0.05f);
         NotifyObservers(PlayerAction.Hurt, damage);
     }
 
     public void HandleHeal(int bonusHP)
     {
         if (items[Item.Heal] <= 0) return;
-        _statusEffectController.Flash(Color.green);
+        _statusEffectController.Flash(Color.green, 2);
         HP = Mathf.Min(HP + bonusHP, maxHP);
         items[Item.Heal]--;
         Debug.Log($"Heal: {bonusHP}");
@@ -205,7 +205,7 @@ public class PlayerStatus : Subjects
     {
         if (items[Item.SpeedIncrease] <= 0)
         {
-            this.GetComponent<PlayerMovement>().ChangeSpeed(speedDefault);
+            PlayerMovement.Instance.ChangeSpeed(speedDefault);
             speedRealTime = speedDefault;
 
             return;
@@ -215,7 +215,7 @@ public class PlayerStatus : Subjects
         if (speedRealTime == speedDefault)
         {
             speedRealTime = speedDefault + speedAdded;
-            GetComponent<PlayerMovement>().ChangeSpeed(speedRealTime);
+            PlayerMovement.Instance.ChangeSpeed(speedRealTime);
 
             NotifyObservers(PlayerAction.SpeedUp, 0);
         }
