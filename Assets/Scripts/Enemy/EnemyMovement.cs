@@ -66,7 +66,7 @@ public class EnemyMovement : MonoBehaviour
         Vector2 pos = this.transform.position;
         pos.x = Mathf.Round(pos.x);
         pos.y = Mathf.Round(pos.y);
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, direction, maxDistanceRaycast);
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, direction, maxDistanceRaycast, layerMask);
 
 
         if (Vector2.Distance(this.transform.position, pos) <= 0.1f)
