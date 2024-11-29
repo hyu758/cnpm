@@ -72,7 +72,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1188604481
-  m_SortingLayer: 7
+  m_SortingLayer: 9
   m_SortingOrder: 0
   m_Sprite: {fileID: -1862584138, guid: 2b24f3d2f4c92e6489f0579a7b10d502, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -178,7 +178,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1188604481
-  m_SortingLayer: 7
+  m_SortingLayer: 9
   m_SortingOrder: 0
   m_Sprite: {fileID: 1903963423, guid: 2b24f3d2f4c92e6489f0579a7b10d502, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -284,7 +284,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1188604481
-  m_SortingLayer: 7
+  m_SortingLayer: 9
   m_SortingOrder: 0
   m_Sprite: {fileID: -1862584138, guid: 2b24f3d2f4c92e6489f0579a7b10d502, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -330,7 +330,7 @@ GameObject:
   - component: {fileID: 7704599629605850925}
   - component: {fileID: 7704599629605850921}
   - component: {fileID: 7704599629605850922}
-  - component: {fileID: 7704599629605850923}
+  - component: {fileID: 3493026592887131491}
   m_Layer: 7
   m_Name: Enemy
   m_TagString: Enemy
@@ -397,7 +397,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0a760e95eb7811429a1fb1462f18044, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _rigidbody2D: {fileID: 0}
   direction: {x: 0, y: 1}
   spriteRendererUp: {fileID: 7753452753103522979}
   spriteRendererDown: {fileID: 7704599630056006870}
@@ -421,7 +420,7 @@ MonoBehaviour:
   speedInit: 6
   damage: 1
   attackSpeed: 1.5
---- !u!58 &7704599629605850923
+--- !u!58 &3493026592887131491
 CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -453,9 +452,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.0048564374, y: -0.09388991}
   serializedVersion: 2
-  m_Radius: 0.23
+  m_Radius: 0.2231863
 --- !u!1 &7704599629660349584
 GameObject:
   m_ObjectHideFlags: 0
@@ -465,8 +464,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7704599629660349585}
-  - component: {fileID: 7704599629660349587}
   - component: {fileID: 6106941257594290974}
+  - component: {fileID: 8002530372244950060}
   m_Layer: 7
   m_Name: Attacking
   m_TagString: Untagged
@@ -489,7 +488,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 7704599629605850920}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!58 &7704599629660349587
+--- !u!114 &6106941257594290974
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7704599629660349584}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9ab2ef87ddb26742a445a4492f417c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 0
+  attackSpeed: 0
+--- !u!58 &8002530372244950060
 CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -518,26 +531,12 @@ CircleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.0048564374, y: -0.09388991}
   serializedVersion: 2
-  m_Radius: 0.3
---- !u!114 &6106941257594290974
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7704599629660349584}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c9ab2ef87ddb26742a445a4492f417c3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damage: 0
-  attackSpeed: 0
+  m_Radius: 0.2231863
 --- !u!1 &7704599630056006869
 GameObject:
   m_ObjectHideFlags: 0
@@ -610,7 +609,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1188604481
-  m_SortingLayer: 7
+  m_SortingLayer: 9
   m_SortingOrder: 0
   m_Sprite: {fileID: 1062038663, guid: 2b24f3d2f4c92e6489f0579a7b10d502, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

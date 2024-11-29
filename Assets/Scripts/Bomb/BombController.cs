@@ -10,6 +10,7 @@ public class BombController : MonoBehaviour
 
     [SerializeField] protected GameObject bombPrefab;
     [SerializeField] protected Explosion explosionPrefab;
+    [SerializeField] protected Exploding explodingPrefab;
     [SerializeField] protected LayerMask layerMask;
     [SerializeField] protected Tilemap destructibles;
     
@@ -118,9 +119,8 @@ public class BombController : MonoBehaviour
     {
         Vector3Int cellPos = destructibles.WorldToCell(position);
         TileBase cell = destructibles.GetTile(cellPos);
-    
         if (cell == null) return;
-        
+        Instantiate(explodingPrefab, position, Quaternion.identity);
         destructibles.SetTile(cellPos,null);
     }
     

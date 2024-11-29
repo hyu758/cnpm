@@ -192,7 +192,7 @@ public class PlayerStatus : Subjects
     public void HandleHeal(int bonusHP)
     {
         if (items[Item.Heal] <= 0) return;
-        _statusEffectController.Flash(Color.green, 2);
+        _statusEffectController.Flash(Color.green, 4, 0.05f);
         HP = Mathf.Min(HP + bonusHP, maxHP);
         items[Item.Heal]--;
         Debug.Log($"Heal: {bonusHP}");
@@ -214,6 +214,7 @@ public class PlayerStatus : Subjects
         items[Item.SpeedIncrease] -= Time.deltaTime;
         if (speedRealTime == speedDefault)
         {
+            _statusEffectController.Flash(Color.white, 4, 0.05f);
             speedRealTime = speedDefault + speedAdded;
             PlayerMovement.Instance.ChangeSpeed(speedRealTime);
 

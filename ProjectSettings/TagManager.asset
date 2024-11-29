@@ -55,11 +55,17 @@ TagManager:
   - name: Box
     uniqueID: 2488813371
     locked: 0
+  - name: Exploding
+    uniqueID: 2433222975
+    locked: 0
   - name: Explosion
     uniqueID: 1068572089
     locked: 0
   - name: Bom
     uniqueID: 3348901607
+    locked: 0
+  - name: Item
+    uniqueID: 589967363
     locked: 0
   - name: Player
     uniqueID: 1188604481

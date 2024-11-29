@@ -10,7 +10,7 @@ using Vector3 = UnityEngine.Vector3;
 
 public class EnemyMovement : MonoBehaviour
 {
-    [SerializeField] protected Rigidbody2D _rigidbody2D;
+    protected Rigidbody2D _rigidbody2D;
 
     private List<Vector2> directionList;
 
@@ -115,7 +115,7 @@ public class EnemyMovement : MonoBehaviour
             fordable.Add( Vector2.right);
         }
 
-        // Increase the rate of going straight
+        
         if (Physics2D.Raycast(transform.position, direction, maxDistanceRaycast, layerMask).collider == null)
         {
             fordable.Add(direction);
