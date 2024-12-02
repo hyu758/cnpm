@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 4099044460709203731}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.05, z: 0}
   m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -133,7 +133,7 @@ Transform:
   m_GameObject: {fileID: 7704599628503750842}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.05, z: 0}
   m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -239,7 +239,7 @@ Transform:
   m_GameObject: {fileID: 7704599629375334484}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.05, z: 0}
   m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -330,7 +330,7 @@ GameObject:
   - component: {fileID: 7704599629605850925}
   - component: {fileID: 7704599629605850921}
   - component: {fileID: 7704599629605850922}
-  - component: {fileID: 3493026592887131491}
+  - component: {fileID: 7704599629605850923}
   m_Layer: 7
   m_Name: Enemy
   m_TagString: Enemy
@@ -397,6 +397,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0a760e95eb7811429a1fb1462f18044, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _rigidbody2D: {fileID: 0}
   direction: {x: 0, y: 1}
   spriteRendererUp: {fileID: 7753452753103522979}
   spriteRendererDown: {fileID: 7704599630056006870}
@@ -420,7 +421,7 @@ MonoBehaviour:
   speedInit: 6
   damage: 1
   attackSpeed: 1.5
---- !u!58 &3493026592887131491
+--- !u!58 &7704599629605850923
 CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -452,9 +453,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.0048564374, y: -0.09388991}
+  m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.2231863
+  m_Radius: 0.23
 --- !u!1 &7704599629660349584
 GameObject:
   m_ObjectHideFlags: 0
@@ -464,8 +465,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7704599629660349585}
+  - component: {fileID: 7704599629660349587}
   - component: {fileID: 6106941257594290974}
-  - component: {fileID: 8002530372244950060}
   m_Layer: 7
   m_Name: Attacking
   m_TagString: Untagged
@@ -488,21 +489,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 7704599629605850920}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6106941257594290974
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7704599629660349584}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c9ab2ef87ddb26742a445a4492f417c3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damage: 0
-  attackSpeed: 0
---- !u!58 &8002530372244950060
+--- !u!58 &7704599629660349587
 CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -531,12 +518,26 @@ CircleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.0048564374, y: -0.09388991}
+  m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.2231863
+  m_Radius: 0.3
+--- !u!114 &6106941257594290974
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7704599629660349584}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9ab2ef87ddb26742a445a4492f417c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 0
+  attackSpeed: 0
 --- !u!1 &7704599630056006869
 GameObject:
   m_ObjectHideFlags: 0
@@ -564,7 +565,7 @@ Transform:
   m_GameObject: {fileID: 7704599630056006869}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.05, z: 0}
   m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
