@@ -73,3 +73,9 @@ TagManager:
   - name: TopOfUndestructible
     uniqueID: 489883531
     locked: 0
+  - name: Skill
+    uniqueID: 2132786747
+    locked: 0
+  - name: UI
+    uniqueID: 1681435849
+    locked: 0

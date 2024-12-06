@@ -56,6 +56,12 @@ MonoBehaviour:
     rate: 4
   - item: {fileID: 8091821487317346945, guid: 1fc708ca6f4d0994f9e3e0b6d83177e2, type: 3}
     rate: 4
+  - item: {fileID: -8107382105354671051, guid: 39b494ee52fa2c246b581ba541cdf0bb, type: 3}
+    rate: 4
+  - item: {fileID: 7490755616217823866, guid: eb4b06414f764f04786f767116d7a209, type: 3}
+    rate: 4
+  - item: {fileID: 2845626248286951629, guid: 6baeb1d4b0b09c0499b606c099f3cf7c, type: 3}
+    rate: 4
 --- !u!212 &2778374139294389018
 SpriteRenderer:
   m_ObjectHideFlags: 0

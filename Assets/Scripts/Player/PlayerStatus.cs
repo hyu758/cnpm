@@ -60,6 +60,14 @@ public class PlayerStatus : Subjects
     [SerializeField] protected Dictionary<Item, int> weapons = new();
     public Dictionary<Item, int> Weapons => weapons;
     
+    [Header("References")]
+    [SerializeField] protected GameObject spinningAxe;
+    [SerializeField] protected GameObject excalibur;
+    [SerializeField] protected GameObject darkExcalibur;
+
+    [SerializeField] protected GameObject excaliburIcon;
+    [SerializeField] protected GameObject darkExcaliburIcon;
+    
     private void Awake()
     {
         if (instance != null && instance != this)
@@ -94,14 +102,12 @@ public class PlayerStatus : Subjects
 
     private void Update()
     {
-        UpdateIsUsingWeapon();
+        // UpdateIsUsingWeapon();
 
         HandlingSpeedUp();
         HandlingShield();
         HandlingBlastRadius();
         HandlingSpinningAxe();
-        HandlingExcalibur();
-        HandlingDarkExcalibur();
 
         HandleHeal(2);
         if (HP <= 0)
@@ -241,34 +247,43 @@ public class PlayerStatus : Subjects
     }
     public void HandlingBlastRadius()
     {
-
+        
     }
    
 
     public void HandlingSpinningAxe()
     {
-
-    }
-
-    public void HandlingExcalibur()
-    {
-    }
-    public void HandlingDarkExcalibur()
-    {
-    }
-
-    protected void UpdateIsUsingWeapon()
-    {
-        foreach (var weapon in weapons)
+        if (items[Item.SpinningAxe] <= 0)
         {
-            if(weapon.Value > 0)
+            if (spinningAxe.activeSelf)
             {
-                isUsingWeapon = true;
-                return;
+                spinningAxe.SetActive(false);
             }
+
+            return;
         }
-        isUsingWeapon = false;
+
+        items[Item.SpinningAxe] -= Time.deltaTime;
+
+        if (!spinningAxe.activeSelf)
+        {
+            spinningAxe.SetActive(true);
+        }
     }
+    
+
+    // protected void UpdateIsUsingWeapon()
+    // {
+    //     foreach (var weapon in weapons)
+    //     {
+    //         if(weapon.Value > 0)
+    //         {
+    //             isUsingWeapon = true;
+    //             return;
+    //         }
+    //     }
+    //     isUsingWeapon = false;
+    // }
 
 
     public void SetUpForItem(Item itemType)
