@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Numerics;
 using Unity.Mathematics;
 using UnityEngine;
+using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
 using Vector2 = UnityEngine.Vector2;
 using Vector3 = UnityEngine.Vector3;
@@ -20,9 +21,9 @@ public class EnemyMovement : MonoBehaviour
     
     private float maxDistanceRaycast = 0.6f;
    
-    private int layerMask = ~(1 << 7);
+    [FormerlySerializedAs("layerMask")] public int enemyLayerMask = ~(1 << 7);
 
-    [SerializeField] protected Vector2 direction = Vector2.up;
+    [SerializeField] public Vector2 direction = Vector2.up;
     private float speed;
     
     private List<Vector2> fordable = new List<Vector2>();
@@ -55,7 +56,7 @@ public class EnemyMovement : MonoBehaviour
 
     private void Update()
     {
-        lineSign = Physics2D.Raycast(transform.position, direction, 10, layerMask);
+        lineSign = Physics2D.Raycast(transform.position, direction, 10, enemyLayerMask);
         
         UpdatePosition();
         UpdateDirection();
@@ -66,7 +67,7 @@ public class EnemyMovement : MonoBehaviour
         Vector2 pos = this.transform.position;
         pos.x = Mathf.Round(pos.x);
         pos.y = Mathf.Round(pos.y);
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, direction, maxDistanceRaycast, layerMask);
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, direction, maxDistanceRaycast, enemyLayerMask);
 
 
         if (Vector2.Distance(this.transform.position, pos) <= 0.1f)
@@ -93,30 +94,30 @@ public class EnemyMovement : MonoBehaviour
         timer += Time.deltaTime;
 
         if(!isNeedingToUpdate()) return;
-        if (isChasing()) return;
+        if (IsChasing()) return;
         if (timer <= timePerUpdateDirection) return;
 
         fordable = new List<Vector2>();
 
-        if (Physics2D.Raycast(transform.position, Vector2.up, maxDistanceRaycast, layerMask).collider == null)
+        if (Physics2D.Raycast(transform.position, Vector2.up, maxDistanceRaycast, enemyLayerMask).collider == null)
         {
             fordable.Add(Vector2.up);
         }
-        if (Physics2D.Raycast(transform.position, Vector2.down, maxDistanceRaycast, layerMask).collider == null)
+        if (Physics2D.Raycast(transform.position, Vector2.down, maxDistanceRaycast, enemyLayerMask).collider == null)
         { 
             fordable.Add(Vector2.down);
         }
-        if (Physics2D.Raycast(transform.position, Vector2.left, maxDistanceRaycast, layerMask).collider == null)
+        if (Physics2D.Raycast(transform.position, Vector2.left, maxDistanceRaycast, enemyLayerMask).collider == null)
         {
             fordable.Add(Vector2.left);
         }
-        if (Physics2D.Raycast(transform.position, Vector2.right, maxDistanceRaycast, layerMask).collider == null)
+        if (Physics2D.Raycast(transform.position, Vector2.right, maxDistanceRaycast, enemyLayerMask).collider == null)
         {
             fordable.Add( Vector2.right);
         }
 
         // Increase the rate of going straight
-        if (Physics2D.Raycast(transform.position, direction, maxDistanceRaycast, layerMask).collider == null)
+        if (Physics2D.Raycast(transform.position, direction, maxDistanceRaycast, enemyLayerMask).collider == null)
         {
             fordable.Add(direction);
             fordable.Add(direction);
@@ -140,7 +141,7 @@ public class EnemyMovement : MonoBehaviour
             SetDirectionSpriteRenderer(spriteRendererRight);
     }
 
-    public bool isChasing()
+    private bool IsChasing()
     {
         if (lineSign.collider == null) return false;
         if (lineSign.collider.CompareTag("Player"))

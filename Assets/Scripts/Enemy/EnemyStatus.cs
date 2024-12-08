@@ -9,6 +9,8 @@ public class EnemyStatus : Subjects
     public float speedInit;
     public int damage;
     public float attackSpeed;
+    public float attackRange;
+    public EnemyType enemyType;
 
     private void Update()
     {
