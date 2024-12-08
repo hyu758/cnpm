@@ -55,10 +55,13 @@ public class FinalSpark : MonoBehaviour
         yield return new WaitForSeconds(waitingTime);
 
         IsShooting = true;
-      
-        transform.localScale = Vector3.Lerp(transform.localScale, new Vector3(1f, 1f, 1f), 5f * Time.deltaTime);
-        
-        if(destructibles) ClearDestructibles();
+
+        if (!this.transform.parent.CompareTag("Enemy"))
+        {
+            transform.localScale = Vector3.Lerp(transform.localScale, new Vector3(1f, 1f, 1f), 5f * Time.deltaTime);
+        }
+
+        if(destructibles && !this.transform.parent.CompareTag("Enemy")) ClearDestructibles();
 
         yield return new WaitForSeconds(shootingTime);
 
