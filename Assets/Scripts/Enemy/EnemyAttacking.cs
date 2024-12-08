@@ -69,12 +69,13 @@ public class EnemyAttacking : MonoBehaviour
 
     private void RangeAttack()
     {
-        //TODO:for tests
-        // if (!IsNeedAttack())
-        // {
-        //     timer = 0;
-        //     return;
-        // }
+        //TODO:for test
+        if (!IsNeedAttack())
+        {
+            timer = 0;
+            return;
+        }
+        //----
         timer += Time.deltaTime;
         if (timer >= attackSpeed)
         {
