@@ -62,11 +62,8 @@ public class PlayerStatus : Subjects
     
     [Header("References")]
     [SerializeField] protected GameObject spinningAxe;
-    [SerializeField] protected GameObject excalibur;
-    [SerializeField] protected GameObject darkExcalibur;
 
-    [SerializeField] protected GameObject excaliburIcon;
-    [SerializeField] protected GameObject darkExcaliburIcon;
+    [SerializeField] protected GameObject shield;
     
     private void Awake()
     {
@@ -233,21 +230,37 @@ public class PlayerStatus : Subjects
     {
         if (items[Item.Shield] <= 0)
         {
+            if (shield.activeSelf) shield.SetActive(false);
             hasShield = false;
             return;
         }
-
+        
         items[Item.Shield] -= Time.deltaTime;
         if (!hasShield)
         {
+            if (!shield.activeSelf) shield.SetActive(true);
             hasShield = true;
-
             NotifyObservers(PlayerAction.Shield, 0);
         }
     }
     public void HandlingBlastRadius()
     {
-        
+        if(items[Item.SuperBlastRadius] <= 0)
+        {
+            GetComponent<BombController>().RadiusChange(radiusDefault);
+
+            radiusRealtime = radiusDefault;
+            return;
+        }
+
+        items[Item.SuperBlastRadius] -= Time.deltaTime;
+        if (radiusRealtime == radiusDefault)
+        {
+            radiusRealtime = radiusRealtime + bombRadiusAdded;
+            GetComponent<BombController>().RadiusChange(radiusRealtime);
+
+            NotifyObservers(PlayerAction.BlastRadius, bombRadiusAdded);
+        }
     }
    
 

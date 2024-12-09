@@ -84,6 +84,7 @@ public class UINarrationSystem : MonoBehaviour, IObserver
     public void ReloadSceneBtn()
     {
         Time.timeScale = 1f;
+        Debug.Log("Reload scene");
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 

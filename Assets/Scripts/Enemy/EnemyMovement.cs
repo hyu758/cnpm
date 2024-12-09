@@ -39,7 +39,7 @@ public class EnemyMovement : MonoBehaviour
     [Header("Flicker")]
     [SerializeField] protected float flickerSpeed = 10f;
     [SerializeField] protected Color damageColor = Color.red;
-    protected Color originalColor;
+    [SerializeField] protected Color originalColor;
     protected bool isFlickering = false;
 
     private void Awake()
@@ -49,8 +49,7 @@ public class EnemyMovement : MonoBehaviour
         activeSpriteRenderer = spriteRendererDown;
 
         speed = GetComponent<EnemyStatus>().speedInit;
-
-        originalColor = Color.white;
+        
 
     }
 

@@ -10,6 +10,7 @@ public class FinalSpark : MonoBehaviour
     public int damage;
     [SerializeField] protected int size = 1;
     [SerializeField] protected float waitingTime = 2f;
+    public float Waitingtime => waitingTime;
     [SerializeField] protected float shootingTime = 3f;
     protected Collider2D col;
     protected Animator animator;
@@ -56,12 +57,12 @@ public class FinalSpark : MonoBehaviour
 
         IsShooting = true;
 
-        if (!this.transform.parent.CompareTag("Enemy"))
+        if (transform.parent == null)
         {
             transform.localScale = Vector3.Lerp(transform.localScale, new Vector3(1f, 1f, 1f), 5f * Time.deltaTime);
+            if(destructibles) ClearDestructibles();
         }
-
-        if(destructibles && !this.transform.parent.CompareTag("Enemy")) ClearDestructibles();
+        
 
         yield return new WaitForSeconds(shootingTime);
 
