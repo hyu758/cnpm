@@ -22,14 +22,14 @@ public class EnemyBullet : Bullet
     private void OnTriggerEnter2D(Collider2D other)
     {
         Debug.Log(other.tag);
-        if (other.CompareTag("Player"))
-        {
-            other.GetComponent<PlayerStatus>().HandleHurt(damage);
-        }
-
+        
         if (!other.CompareTag("Enemy"))
         {
             SelfDestroy();
+        }
+        if (other.CompareTag("Player"))
+        {
+            other.GetComponent<PlayerStatus>().HandleHurt(damage);
         }
     }
 }
