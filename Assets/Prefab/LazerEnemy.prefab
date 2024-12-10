@@ -422,7 +422,7 @@ MonoBehaviour:
   HP: 5
   speedInit: 6
   damage: 1
-  attackSpeed: 4
+  attackSpeed: 2
   attackRange: 7
   enemyType: 1
 --- !u!58 &7704599629605850923

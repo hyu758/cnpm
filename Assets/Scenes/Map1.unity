@@ -16620,10 +16620,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: LazerEnemy
       objectReference: {fileID: 0}
-    - target: {fileID: 7704599629605850915, guid: 858c06689c0499348bb50519458bef9e, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 7704599629605850920, guid: 858c06689c0499348bb50519458bef9e, type: 3}
       propertyPath: m_LocalPosition.x
       value: 9.07
