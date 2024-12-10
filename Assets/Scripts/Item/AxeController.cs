@@ -50,11 +50,14 @@ public class AxeController : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other == null) return;
-        //Debug.Log(other.name);
 
         if (other.CompareTag("Enemy"))
         {
             other.GetComponent<EnemyStatus>().HandleHurt(damage);
+        }
+        if (other.CompareTag("Boss"))
+        {
+            other.GetComponent<BossController>().HandleHurt(damage);
         }
         
     }

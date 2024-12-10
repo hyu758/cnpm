@@ -53,7 +53,10 @@ public class PlayerStatus : Subjects
     [SerializeField] protected int bombAmount = 3;
     public int BombAmount => bombAmount;
 
-
+    private bool isInvulnerable = false;
+    [SerializeField] private float invulnerableDuration = 1f;
+    
+    
     [Header("Item and Weapon Dictionary")]
     [SerializeField] protected Dictionary<Item, float> items = new();
     public Dictionary<Item, float> Items => items;
@@ -140,6 +143,7 @@ public class PlayerStatus : Subjects
             Debug.LogError($"Item {item} not found in weapons dictionary.");
             return;
         }
+        
         items[item] = quality;
     }
     public void AddWeaponQuantity(Item item, int quality)
@@ -149,22 +153,35 @@ public class PlayerStatus : Subjects
             Debug.LogError($"Weapon {item} not found in weapons dictionary.");
             return;
         }
-
+        if (item == Item.Excalibur) PlusExcalibur();
+        if (item == Item.DarkExcalibur) PlusDarkExcalibur();
         weapons[item] += quality;
     }
-    public void RemoveWeaponQuantity(Item item, int quality)
+    public void RemoveWeaponQuantity(Item item, int quantity)
     {
         if (!weapons.ContainsKey(item))
         {
             Debug.LogError($"Weapon {item} not found in weapons dictionary.");
             return;
         }
-        if(weapons[item] < quality)
+        if(weapons[item] < quantity)
         {
             Debug.Log($"Weapon {item} is not enough to use");
             return;
         }
-        weapons[item] = Mathf.Max(weapons[item] - quality, 0);
+
+        if (item == Item.Excalibur)
+        {
+            Debug.Log(item);
+            NotifyObservers(PlayerAction.Excalibur, 0);
+        }
+
+        if (item == Item.DarkExcalibur)
+        {
+            Debug.Log(item);
+            NotifyObservers(PlayerAction.DarkExcalibur, 0);
+        }
+        weapons[item] = Mathf.Max(weapons[item] - quantity, 0);
     }
 
 
@@ -178,20 +195,34 @@ public class PlayerStatus : Subjects
         NotifyObservers(PlayerAction.PlusBomb, 1);
     }
 
+    public void PlusExcalibur()
+    {
+        NotifyObservers(PlayerAction.PlusExcalibur, 1);
+    }
 
+    public void PlusDarkExcalibur()
+    {
+        NotifyObservers(PlayerAction.PlusDarkExcalibur, 1);
+    }
     public void HandleHurt(int damage)
     {
-        if (hasShield)
+        if (hasShield || isInvulnerable)
         {
-             Debug.Log("Tao co khien");
              return;
         }
         
         HP = Mathf.Max(HP-damage, 0);
         _statusEffectController.Flash(Color.red, 4, 0.05f);
         NotifyObservers(PlayerAction.Hurt, damage);
+        StartCoroutine(SetInvulnerability());
     }
 
+    private IEnumerator SetInvulnerability()
+    {
+        isInvulnerable = true;
+        yield return new WaitForSeconds(invulnerableDuration);
+        isInvulnerable = false;
+    }
     public void HandleHeal(int bonusHP)
     {
         if (items[Item.Heal] <= 0) return;
