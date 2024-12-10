@@ -17,6 +17,7 @@ public class LevelManager : Subjects
         collider2D = GetComponent<CircleCollider2D>();
         spriteRenderer = GetComponent<AnimatedSpriteRenderer>();
         enemyList = new List<GameObject>(GameObject.FindGameObjectsWithTag("Enemy"));
+        enemyList.Add(GameObject.FindGameObjectWithTag("Boss"));
         enemiesRemaining = enemyList.Count;
     }
 

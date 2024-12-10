@@ -6,7 +6,8 @@ TagManager:
   tags:
   - Bomb
   - Enemy
-  - Destructibles
+  - Destructible
+  - Boss
   layers:
   - Default
   - TransparentFX
@@ -73,6 +74,9 @@ TagManager:
     locked: 0
   - name: TopOfUndestructible
     uniqueID: 489883531
+    locked: 0
+  - name: Boss
+    uniqueID: 3719438065
     locked: 0
   - name: Skill
     uniqueID: 2132786747

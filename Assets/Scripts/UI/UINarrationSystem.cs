@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -23,6 +24,12 @@ public class UINarrationSystem : MonoBehaviour, IObserver
     public int currentRadius;
     public Text radiusText;
 
+    [Header("Weapon quantity")]
+    public int excaliburAmount;
+    public int darkExcaliburAmount;
+    public TMP_Text excaliburText;
+    public TMP_Text darkExcaliburText;
+    
     [Header("Shield and Speed")]
     public GameObject shield;
     public GameObject speedUp;
@@ -45,7 +52,9 @@ public class UINarrationSystem : MonoBehaviour, IObserver
     private Dictionary<BossAction, System.Action<float>> _bossActionHandler;
 
     private void Awake()
-    { 
+    {
+        excaliburAmount = 0;
+        darkExcaliburAmount = 0;
         radiusDefault = PlayerStatus.Instance.RadiusDefault;
         currentRadius = radiusDefault;
         bombAmount = PlayerStatus.Instance.BombAmount;
@@ -72,12 +81,15 @@ public class UINarrationSystem : MonoBehaviour, IObserver
             { PlayerAction.SpeedUp,(n) => HandleSpeedUp(n) },
             { PlayerAction.Shield,(n) => HandleShield(n) },
             { PlayerAction.BlastRadius,(n)=> HandleBlastRadius(n) },
-            // { PlayerAction.HandleBomb, HandleHandleBomb },
+            { PlayerAction.Excalibur, (n) => Excalibur(n)},
+            { PlayerAction.DarkExcalibur, (n) => DarkExcalibur(n)},
             { PlayerAction.Heal, (n)=> HandleHeal(n)},
             { PlayerAction.PlaceBomb, (n) =>PlaceBomb(n)},
             { PlayerAction.PlusBomb, (n) =>PlusBomb(n)},
             { PlayerAction.Win, (n) => Win(n) },
             { PlayerAction.Lose, (n) => Lose(n) },
+            { PlayerAction.PlusExcalibur, (n) => PlusExcalibur(n)},
+            { PlayerAction.PlusDarkExcalibur, (n) => PlusDarkExcalibur(n)}
         };
     }
 
@@ -185,6 +197,31 @@ public class UINarrationSystem : MonoBehaviour, IObserver
         Debug.Log("+ o radius ne");
     }
 
+    private void PlusExcalibur(float n)
+    {
+        excaliburAmount++;
+        Debug.Log(excaliburAmount);
+        excaliburText.text = excaliburAmount.ToString();
+    }
+
+    private void PlusDarkExcalibur(float n)
+    {
+        darkExcaliburAmount++;
+        Debug.Log(darkExcaliburAmount);
+        darkExcaliburText.text = darkExcaliburAmount.ToString();
+    }
+
+    private void Excalibur(float n)
+    {
+        excaliburAmount--;
+        excaliburText.text = excaliburAmount.ToString();
+    }
+
+    private void DarkExcalibur(float n)
+    {
+        darkExcaliburAmount--;
+        darkExcaliburText.text = darkExcaliburAmount.ToString();
+    }
     private IEnumerator SpeedUpOn(float n)
     {
         speedUp.SetActive(true);

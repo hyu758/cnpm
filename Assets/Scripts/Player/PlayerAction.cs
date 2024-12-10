@@ -9,5 +9,9 @@ public enum PlayerAction
     PlaceBomb,
     PlusBomb,
     Win, 
-    Lose
+    Lose,
+    PlusExcalibur,
+    PlusDarkExcalibur,
+    Excalibur,
+    DarkExcalibur,
 }

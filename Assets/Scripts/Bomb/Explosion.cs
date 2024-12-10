@@ -42,6 +42,9 @@ public class Explosion : MonoBehaviour
         {
             other.GetComponent<EnemyStatus>().HandleHurt(1);
         }
-        
+        if (other.CompareTag("Boss"))
+        {
+            other.GetComponent<BossController>().HandleHurt(1);
+        }
     }
 }

@@ -19,6 +19,9 @@ public class ArcOfEnergy : Bullet
         {
             other.GetComponent<EnemyStatus>().HandleHurt(damage);
         }
-        
+        if (other.CompareTag("Boss"))
+        {
+            other.GetComponent<BossController>().HandleHurt(damage);
+        }
     }
 }
