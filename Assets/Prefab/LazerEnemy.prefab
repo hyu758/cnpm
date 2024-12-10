@@ -75,7 +75,7 @@ SpriteRenderer:
   m_SortingLayer: 9
   m_SortingOrder: 0
   m_Sprite: {fileID: -1862584138, guid: 2b24f3d2f4c92e6489f0579a7b10d502, type: 3}
-  m_Color: {r: 0.986397, g: 1, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 0, a: 1}
   m_FlipX: 1
   m_FlipY: 0
   m_DrawMode: 0
@@ -181,7 +181,7 @@ SpriteRenderer:
   m_SortingLayer: 9
   m_SortingOrder: 0
   m_Sprite: {fileID: 1903963423, guid: 2b24f3d2f4c92e6489f0579a7b10d502, type: 3}
-  m_Color: {r: 0.986397, g: 1, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -287,7 +287,7 @@ SpriteRenderer:
   m_SortingLayer: 9
   m_SortingOrder: 0
   m_Sprite: {fileID: -1862584138, guid: 2b24f3d2f4c92e6489f0579a7b10d502, type: 3}
-  m_Color: {r: 0.986397, g: 1, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -371,7 +371,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0
+  m_LinearDrag: 15
   m_AngularDrag: 0
   m_GravityScale: 0
   m_Material: {fileID: 0}
@@ -406,6 +406,7 @@ MonoBehaviour:
   spriteRendererRight: {fileID: 8029056318700455144}
   flickerSpeed: 10
   damageColor: {r: 1, g: 0, b: 0, a: 1}
+  originalColor: {r: 1, g: 1, b: 0, a: 1}
 --- !u!114 &7704599629605850922
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -540,7 +541,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   circleCollider: {fileID: 7704599629660349587}
-  lazer: {fileID: 6069437041527845771, guid: 15dfa7b056ff61242b779844dab775ec, type: 3}
+  enemyBullet: {fileID: 7795347623740821132, guid: e2eb96809c3a52e4cbeb72542381c1aa, type: 3}
 --- !u!1 &7704599630056006869
 GameObject:
   m_ObjectHideFlags: 0
@@ -616,7 +617,7 @@ SpriteRenderer:
   m_SortingLayer: 9
   m_SortingOrder: 0
   m_Sprite: {fileID: 1062038663, guid: 2b24f3d2f4c92e6489f0579a7b10d502, type: 3}
-  m_Color: {r: 0.986397, g: 1, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

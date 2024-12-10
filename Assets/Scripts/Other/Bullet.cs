@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
@@ -9,7 +10,7 @@ public class Bullet : MonoBehaviour
     [SerializeField] protected float speed = 10;
     [SerializeField] protected int size = 1;
 
-    private Tilemap destructibles;
+    protected Tilemap destructibles;
     [SerializeField] protected GameObject explodingPrefab;
 
     private void Awake()
@@ -17,21 +18,12 @@ public class Bullet : MonoBehaviour
         destructibles = GameObject.Find("Destructible").GetComponent<Tilemap>();
     }
 
-    void Update()
-    {
-        BulletFlying(); 
-        if (destructibles)
-        {
-            ClearDestructibles();
-        }
-    }
-
-    private void BulletFlying()
+    protected void BulletFlying()
     {
         transform.Translate(Vector3.right * speed * Time.deltaTime);
     }
 
-    private void ClearDestructibles()
+    protected void ClearDestructibles()
     {
         Vector2 center = new Vector2(Mathf.Round(transform.position.x), Mathf.Round(transform.position.y));
 
@@ -51,5 +43,11 @@ public class Bullet : MonoBehaviour
 
         Instantiate(explodingPrefab, position, Quaternion.identity);
         destructibles.SetTile(cellPos, null);
+    }
+
+    protected void SelfDestroy()
+    {
+        Debug.Log("asdasdasdasd");
+        Destroy(this.GameObject());
     }
 }

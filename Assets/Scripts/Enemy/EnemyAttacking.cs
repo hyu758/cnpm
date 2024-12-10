@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class EnemyAttacking : MonoBehaviour
 {
@@ -6,7 +7,7 @@ public class EnemyAttacking : MonoBehaviour
     private float attackSpeed;
     private EnemyType enemyType;
     [SerializeField] protected CircleCollider2D circleCollider;
-    [SerializeField] protected GameObject lazer;
+    [SerializeField] protected GameObject enemyBullet;
     private RaycastHit2D attackLine;
     private float attackRange;
     private int layerMask;
@@ -70,11 +71,11 @@ public class EnemyAttacking : MonoBehaviour
     private void RangeAttack()
     {
         //TODO:for test
-        if (!IsNeedAttack())
-        {
-            timer = 0;
-            return;
-        }
+        // if (!IsNeedAttack())
+        // {
+        //     timer = 0;
+        //     return;
+        // }
         //----
         timer += Time.deltaTime;
         if (timer >= attackSpeed)
@@ -86,13 +87,10 @@ public class EnemyAttacking : MonoBehaviour
 
     private void Shoot()
     {
-        GameObject darkExca = Instantiate(lazer, this.transform.position, this.transform.rotation);
-        darkExca.transform.SetParent(this.transform.parent);
+        GameObject bullet = Instantiate(enemyBullet, transform.position, transform.rotation);
 
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-        darkExca.transform.rotation = Quaternion.Euler(0f, 0f, angle);
-
-        darkExca.transform.position += new Vector3(direction.x, direction.y, 0f);
+        bullet.transform.rotation = Quaternion.Euler(0f, 0f, angle);
     }
 
     private bool IsNeedAttack()
