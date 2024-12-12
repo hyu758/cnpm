@@ -10,6 +10,10 @@ public class FinalSparkForPlayer : FinalSpark
         {
             other.GetComponent<EnemyStatus>().HandleHurt(damage);
         }
-        
+
+        if (other.CompareTag("Boss"))
+        {
+            other.GetComponent<BossController>().HandleHurt(damage);
+        }
     }
 }

@@ -100,12 +100,14 @@ public class UINarrationSystemForBossMap : MonoBehaviour, IObserver
 
     public void ReloadSceneBtn()
     {
+        AudioManager.Instance.PlaySFX(AudioManager.Instance.ClickUI);
         Time.timeScale = 1f;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     public void HomeBtn()
     {
+        AudioManager.Instance.PlaySFX(AudioManager.Instance.ClickUI);
         Time.timeScale = 1f;
         SceneManager.LoadScene("HomeScene");
     }
@@ -118,7 +120,6 @@ public class UINarrationSystemForBossMap : MonoBehaviour, IObserver
     private void Win(float n)
     {
         if (!endGameInfo) return;
-        if (!isWin) return;
         Debug.Log("Win");
         statement.text = "You Win";
         statement.color = Color.white;

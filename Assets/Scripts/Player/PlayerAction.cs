@@ -14,4 +14,5 @@ public enum PlayerAction
     PlusDarkExcalibur,
     Excalibur,
     DarkExcalibur,
+    PickUp
 }

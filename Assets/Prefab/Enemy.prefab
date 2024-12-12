@@ -398,6 +398,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _rigidbody2D: {fileID: 0}
+  enemyLayerMask: -129
   direction: {x: 0, y: 1}
   spriteRendererUp: {fileID: 7753452753103522979}
   spriteRendererDown: {fileID: 7704599630056006870}
@@ -405,6 +406,7 @@ MonoBehaviour:
   spriteRendererRight: {fileID: 8029056318700455144}
   flickerSpeed: 10
   damageColor: {r: 1, g: 0, b: 0, a: 1}
+  originalColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!114 &7704599629605850922
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -421,6 +423,8 @@ MonoBehaviour:
   speedInit: 6
   damage: 1
   attackSpeed: 1.5
+  attackRange: 0
+  enemyType: 0
 --- !u!58 &7704599629605850923
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -453,9 +457,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.006285548, y: -0.054475725}
   serializedVersion: 2
-  m_Radius: 0.23
+  m_Radius: 0.21712643
 --- !u!1 &7704599629660349584
 GameObject:
   m_ObjectHideFlags: 0
@@ -536,8 +540,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9ab2ef87ddb26742a445a4492f417c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 0
-  attackSpeed: 0
+  circleCollider: {fileID: 0}
+  lazer: {fileID: 0}
 --- !u!1 &7704599630056006869
 GameObject:
   m_ObjectHideFlags: 0

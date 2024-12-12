@@ -153,6 +153,7 @@ public class PlayerStatus : Subjects
             Debug.LogError($"Weapon {item} not found in weapons dictionary.");
             return;
         }
+        NotifyObservers(PlayerAction.PickUp, 1);
         if (item == Item.Excalibur) PlusExcalibur();
         if (item == Item.DarkExcalibur) PlusDarkExcalibur();
         weapons[item] += quality;
