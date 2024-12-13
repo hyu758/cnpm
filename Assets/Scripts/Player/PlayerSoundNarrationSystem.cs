@@ -62,7 +62,7 @@ public class PlayerSoundNarrationSystem : MonoBehaviour, IObserver
 
     private void HandleSpeedIncrease()
     {
-        
+        AudioManager.Instance.PlaySFX(AudioManager.Instance.SpeedUp);
     }
 
     private void HandleBlastRadius()

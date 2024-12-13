@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -13,8 +12,8 @@ public class LevelManager : Subjects
     private List<GameObject> enemyList;
     public new CircleCollider2D collider2D;
     public AnimatedSpriteRenderer spriteRenderer;
-    
 
+    [SerializeField] private float transitionTime;
     private void Awake()
     {
         collider2D = GetComponent<CircleCollider2D>();
@@ -49,6 +48,7 @@ public class LevelManager : Subjects
         }
         
         enemiesRemaining = enemiesCounter;
+
         
         if (isWin)
         {
@@ -68,6 +68,7 @@ public class LevelManager : Subjects
     private IEnumerator Win()
     {
         yield return new WaitForSeconds(3f);
+        Debug.Log("SO QUAI :" + "ALO?");
         NotifyObservers(PlayerAction.Win, 0);
     }
     private void OnTriggerEnter2D(Collider2D collision)
