@@ -423,7 +423,7 @@ MonoBehaviour:
   speedInit: 6
   damage: 1
   attackSpeed: 1.5
-  attackRange: 0
+  attackRange: 10
   enemyType: 0
 --- !u!58 &7704599629605850923
 CircleCollider2D:
@@ -541,7 +541,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   circleCollider: {fileID: 0}
-  lazer: {fileID: 0}
+  enemyBullet: {fileID: 0}
 --- !u!1 &7704599630056006869
 GameObject:
   m_ObjectHideFlags: 0

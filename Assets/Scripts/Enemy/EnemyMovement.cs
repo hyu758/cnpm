@@ -17,7 +17,7 @@ public class EnemyMovement : MonoBehaviour
 
     private float timePerUpdateDirection = 0.5f;
     private float timer = 2f;
-    private RaycastHit2D lineSign;
+    public RaycastHit2D lineSign;
     
     private float maxDistanceRaycast = 0.6f;
    
@@ -42,20 +42,27 @@ public class EnemyMovement : MonoBehaviour
     [SerializeField] protected Color originalColor;
     protected bool isFlickering = false;
 
+    private EnemyType enemyType;
+    private float defaultSpeed;
+
+    private float attackRange;
+    
     private void Awake()
     {
         _rigidbody2D = GetComponent<Rigidbody2D>();
 
         activeSpriteRenderer = spriteRendererDown;
-
-        speed = GetComponent<EnemyStatus>().speedInit;
         
+        defaultSpeed = GetComponent<EnemyStatus>().speedInit;
+        speed = defaultSpeed;
+        attackRange = GetComponent<EnemyStatus>().attackRange;
 
+        enemyType = GetComponent<EnemyStatus>().enemyType;
     }
 
     private void Update()
     {
-        lineSign = Physics2D.Raycast(transform.position, direction, 10, enemyLayerMask);
+        lineSign = Physics2D.Raycast(transform.position, direction, attackRange, enemyLayerMask);
         
         UpdatePosition();
         UpdateDirection();
@@ -93,7 +100,17 @@ public class EnemyMovement : MonoBehaviour
         timer += Time.deltaTime;
 
         if(!isNeedingToUpdate()) return;
-        if (IsChasing()) return;
+        if (IsChasing() || (lineSign.collider?.CompareTag("Bullet") ?? false))
+        {
+            if (enemyType == EnemyType.Range)
+            {
+                speed = 0f;
+            }
+            
+            return;
+        }
+
+        speed = defaultSpeed;
         if (timer <= timePerUpdateDirection) return;
 
         fordable = new List<Vector2>();
@@ -143,6 +160,7 @@ public class EnemyMovement : MonoBehaviour
     private bool IsChasing()
     {
         if (lineSign.collider == null) return false;
+        Debug.Log(lineSign.collider.tag);
         if (lineSign.collider.CompareTag("Player"))
         {
             return true;

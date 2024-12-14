@@ -13,7 +13,8 @@ public class EnemyAttacking : MonoBehaviour
     private int layerMask;
     private Vector2 direction = Vector2.up;
 
-    protected float timer;
+    private float timer;
+    private float defaultTime;
 
     private void Awake()
     {
@@ -22,7 +23,8 @@ public class EnemyAttacking : MonoBehaviour
         attackRange = GetComponentInParent<EnemyStatus>().attackRange;
         layerMask = GetComponentInParent<EnemyMovement>().enemyLayerMask;
         enemyType = GetComponentInParent<EnemyStatus>().enemyType;
-        timer = attackSpeed;
+        defaultTime = attackSpeed;
+        timer = defaultTime;
         if (enemyType == EnemyType.Range)
         {
             circleCollider.enabled = false;
@@ -37,7 +39,7 @@ public class EnemyAttacking : MonoBehaviour
         }
 
         direction = GetComponentInParent<EnemyMovement>().direction;
-        attackLine = Physics2D.Raycast(transform.position, direction, attackRange, layerMask);
+        attackLine = GetComponentInParent<EnemyMovement>().lineSign;
         RangeAttack();
     }
 
@@ -73,7 +75,7 @@ public class EnemyAttacking : MonoBehaviour
         //TODO:for test
         if (!IsNeedAttack())
         {
-            timer = 0;
+            // timer = defaultTime;
             return;
         }
         //----

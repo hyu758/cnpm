@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 296886458488416915}
   - component: {fileID: 296886458488416912}
-  - component: {fileID: 296886458488416926}
   - component: {fileID: 2041226180394838194}
   - component: {fileID: 4582046092704106609}
+  - component: {fileID: 402840043746298791}
   m_Layer: 0
   m_Name: BossBullet
   m_TagString: Untagged
@@ -70,22 +70,6 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
---- !u!114 &296886458488416926
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 296886458488416924}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c6371da80bda2a14eaed53a310efce96, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damage: 1
-  speed: 10
-  size: 1
-  explodingPrefab: {fileID: 7853119218337303457, guid: adbce38a6ff1f794bb5f2e061229c44d, type: 3}
 --- !u!212 &2041226180394838194
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -125,7 +109,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 2132786747
-  m_SortingLayer: 11
+  m_SortingLayer: 12
   m_SortingOrder: 0
   m_Sprite: {fileID: 1185864967, guid: 884eaa97219b0a145bf937e0fd922841, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -159,3 +143,19 @@ MonoBehaviour:
   animationTime: 0.25
   loop: 1
   idle: 0
+--- !u!114 &402840043746298791
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 296886458488416924}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6371da80bda2a14eaed53a310efce96, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 1
+  speed: 10
+  size: 1
+  explodingPrefab: {fileID: 7853119218337303457, guid: 09bf7eef1376bc24abc45582a4364cc0, type: 3}

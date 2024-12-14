@@ -423,7 +423,7 @@ MonoBehaviour:
   speedInit: 6
   damage: 1
   attackSpeed: 2
-  attackRange: 7
+  attackRange: 10
   enemyType: 1
 --- !u!58 &7704599629605850923
 CircleCollider2D:
@@ -457,9 +457,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.006285548, y: -0.054475725}
   serializedVersion: 2
-  m_Radius: 0.23
+  m_Radius: 0.21712643
 --- !u!1 &7704599629660349584
 GameObject:
   m_ObjectHideFlags: 0

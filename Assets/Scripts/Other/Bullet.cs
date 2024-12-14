@@ -13,9 +13,24 @@ public class Bullet : MonoBehaviour
     protected Tilemap destructibles;
     [SerializeField] protected GameObject explodingPrefab;
 
-    private void Awake()
+    private void Start()
     {
         destructibles = GameObject.Find("Destructible").GetComponent<Tilemap>();
+        // destructibles = new Tilemap();
+    }
+    
+    private void Update()
+    {
+        BulletFlying();
+        
+        Vector3Int cellPosition = destructibles.WorldToCell(this.transform.position);
+
+        if (destructibles.GetTile(cellPosition))
+        {
+            Debug.Log(destructibles);
+            ClearDestructibles();
+            SelfDestroy();
+        }
     }
 
     protected void BulletFlying()
