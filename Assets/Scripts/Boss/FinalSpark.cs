@@ -39,6 +39,7 @@ public class FinalSpark : MonoBehaviour
         col = GetComponent<Collider2D>();
         animator = GetComponent<Animator>();
         destructibles = GameObject.Find("Destructible").GetComponent<Tilemap>();
+        AudioManager.Instance.PlaySFX(AudioManager.Instance.DarkExcalibur);
     }
 
     private void Start()

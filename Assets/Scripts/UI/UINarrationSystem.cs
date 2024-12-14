@@ -95,13 +95,14 @@ public class UINarrationSystem : MonoBehaviour, IObserver
 
     public void ReloadSceneBtn()
     {
+        AudioManager.Instance.PlaySFX(AudioManager.Instance.ClickUI);
         Time.timeScale = 1f;
-        Debug.Log("Reload scene");
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     public void HomeBtn()
     {
+        AudioManager.Instance.PlaySFX(AudioManager.Instance.ClickUI);
         Time.timeScale = 1f;
         SceneManager.LoadScene("HomeScene");
     }

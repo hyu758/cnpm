@@ -7,7 +7,12 @@ public class Explosion : MonoBehaviour
     public AnimatedSpriteRenderer top;
     public AnimatedSpriteRenderer middle;
     public AnimatedSpriteRenderer bot;
-    
+
+    private void Start()
+    {
+        AudioManager.Instance.PlaySFX(AudioManager.Instance.Explosion);
+    }
+
     // Start is called before the first frame update
     public void SetActiveSpriteRenderer(AnimatedSpriteRenderer renderer)
     {

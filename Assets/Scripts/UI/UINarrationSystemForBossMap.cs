@@ -43,6 +43,7 @@ public class UINarrationSystemForBossMap : MonoBehaviour, IObserver
     public GameObject endGameInfo;
     public Text statement;
     public Image endBg;
+    public GameObject RetryBtn;
 
     [Header("References")]
     public Subjects _playerSubject;
@@ -64,7 +65,7 @@ public class UINarrationSystemForBossMap : MonoBehaviour, IObserver
         playerHP = PlayerStatus.Instance.CurrentHP;
 
         bossMaxHP = _bossController.GetComponent<BossController>().maxHP;
-        bossHP = _bossController.gameObject.GetComponent<BossController>().HP;
+        bossHP = _bossController.gameObject.GetComponent<BossController>().maxHP;
 
         bombNumber.text = currentBomb.ToString();
         radiusText.text = currentRadius.ToString();
@@ -100,12 +101,14 @@ public class UINarrationSystemForBossMap : MonoBehaviour, IObserver
 
     public void ReloadSceneBtn()
     {
+        AudioManager.Instance.PlaySFX(AudioManager.Instance.ClickUI);
         Time.timeScale = 1f;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     public void HomeBtn()
     {
+        AudioManager.Instance.PlaySFX(AudioManager.Instance.ClickUI);
         Time.timeScale = 1f;
         SceneManager.LoadScene("HomeScene");
     }
@@ -118,22 +121,27 @@ public class UINarrationSystemForBossMap : MonoBehaviour, IObserver
     private void Win(float n)
     {
         if (!endGameInfo) return;
-        if (!isWin) return;
+        LevelLoader.Instance.SetNotActive();
         Debug.Log("Win");
         statement.text = "You Win";
         statement.color = Color.white;
         endGameInfo.SetActive(true);
+        RetryBtn.SetActive(false);
         Time.timeScale = 0f;
+        AudioManager.Instance.StopBGMusic();
     }
 
     private void Lose(float n)
     {
         if (!endGameInfo) return;
+        LevelLoader.Instance.SetNotActive();
         Debug.Log("Lose");
         statement.text = "You Lose";
         statement.color = new Color(255f / 255f, 0f, 61f / 255f);
         endGameInfo.SetActive(true);
         Time.timeScale = 0f;
+        AudioManager.Instance.StopBGMusic();
+        
 
     }
 

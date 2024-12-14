@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -12,6 +13,7 @@ public class LevelManager : Subjects
     public new CircleCollider2D collider2D;
     public AnimatedSpriteRenderer spriteRenderer;
 
+    [SerializeField] private float transitionTime;
     private void Awake()
     {
         collider2D = GetComponent<CircleCollider2D>();
@@ -47,14 +49,28 @@ public class LevelManager : Subjects
         
         enemiesRemaining = enemiesCounter;
 
+        
         if (isWin)
         {
+            if (SceneManager.GetActiveScene().buildIndex == SceneManager.sceneCountInBuildSettings - 1)
+            {
+                AudioManager.Instance.PlaySFX(AudioManager.Instance.Win);
+                StartCoroutine(Win());
+                enemyList.Add(new GameObject());
+                return;
+            }
             NotifyObservers(PlayerAction.Win, 0);
             collider2D.enabled = true;
             spriteRenderer.enabled = true;
         }
     }
 
+    private IEnumerator Win()
+    {
+        yield return new WaitForSeconds(3f);
+        Debug.Log("SO QUAI :" + "ALO?");
+        NotifyObservers(PlayerAction.Win, 0);
+    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (!collision) return;

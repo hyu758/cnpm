@@ -8,6 +8,7 @@ public class PlayerSoundNarrationSystem : MonoBehaviour, IObserver
     public Subjects _playerSubject;
 
     private Dictionary<PlayerAction, System.Action> _playerActionHandler;
+    
 
     private void Awake()
     {
@@ -19,7 +20,9 @@ public class PlayerSoundNarrationSystem : MonoBehaviour, IObserver
             { PlayerAction.BlastRadius, HandleBlastRadius },
             { PlayerAction.HandleBomb, HandleHandleBomb },
             { PlayerAction.Heal, HandleHeal},
-            { PlayerAction.PlaceBomb, PlaceBomb }
+            { PlayerAction.PlaceBomb, PlaceBomb },
+            { PlayerAction.Lose , Lose},
+            {PlayerAction.PickUp, PickUp}
         };
     }
 
@@ -59,7 +62,7 @@ public class PlayerSoundNarrationSystem : MonoBehaviour, IObserver
 
     private void HandleSpeedIncrease()
     {
-        
+        AudioManager.Instance.PlaySFX(AudioManager.Instance.SpeedUp);
     }
 
     private void HandleBlastRadius()
@@ -67,11 +70,20 @@ public class PlayerSoundNarrationSystem : MonoBehaviour, IObserver
         
     }
 
+    private void Lose()
+    {
+        AudioManager.Instance.PlaySFX(AudioManager.Instance.Death);
+        AudioManager.Instance.StopBGMusic();
+    }
     private void HandleHeal()
     {
-        Debug.Log("Jett heal me");
+        AudioManager.Instance.PlaySFX(AudioManager.Instance.Health);
     }
 
+    private void PickUp()
+    {
+        AudioManager.Instance.PlaySFX(AudioManager.Instance.Pickup);
+    }
     private void OnEnable()
     {
         _playerSubject.AddObservoer(this);

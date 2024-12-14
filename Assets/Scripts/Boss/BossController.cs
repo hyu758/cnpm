@@ -22,20 +22,23 @@ public class BossController : Subjects
     [SerializeField] protected float restTime = 2f;
     [SerializeField] protected int currentAction = 0;
 
-    [SerializeField] public int HP = 100;
-    [SerializeField] public int maxHP = 100;
+    public int HP;
+    [SerializeField] public int maxHP;
 
+    private StatusEffectController _statusEffectController;
 
     void Awake()
     {
         animator = GetComponent<Animator>();
+        _statusEffectController = GetComponent<StatusEffectController>();
+        HP = maxHP;
 
     }
 
     void Start()
     {
         SetCollider();
-        HP = maxHP;
+        
         for (int i = 0; i < skills.Count; i++)
         {
             skills[i].skillObject.SetActive(false);
@@ -116,6 +119,7 @@ public class BossController : Subjects
     public void HandleHurt(int damage)
     {
         HP -= damage;
+        _statusEffectController.Flash(Color.red, 4, 0.05f);
         Debug.Log("Remain HP of Boss: " + HP.ToString());
         NotifyObservers(BossAction.Hurt, damage);
     }
