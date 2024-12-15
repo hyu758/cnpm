@@ -8,15 +8,20 @@ public class Exploding : MonoBehaviour
 {
     public float itemDropRate = 1f;
     public List<ItemPickupWithRate> itemPickups;
+    private bool isQuitting = false;
 
     void Start()
     {
         Destroy(gameObject, 1f);
     }
+    private void OnApplicationQuit()
+    {
+        isQuitting = true;
+    }
 
     private void OnDestroy()
     {
-        if (itemPickups.Count == 0) return;
+        if (isQuitting || itemPickups.Count == 0) return;
 
         float randomValue = Random.Range(0f, 1f);
         Debug.Log(randomValue);
@@ -35,6 +40,7 @@ public class Exploding : MonoBehaviour
 
     private ItemPickup GetRandomItem()
     {
+        
         int totalRate = 0;
         foreach (var item in itemPickups)
         {
