@@ -7,7 +7,7 @@ public class Excalibur : MonoBehaviour
 {
     public GameObject arcOfEnergyPrefab;
     [SerializeField] KeyCode inputKey;
-    
+    private Vector2 direction;
 
     // Update is called once per frame
     void Update()
@@ -23,9 +23,10 @@ public class Excalibur : MonoBehaviour
     void ExcaliburAttack()
     {
         GameObject exca = Instantiate(arcOfEnergyPrefab, this.transform.position, this.transform.rotation);
+        
         //exca.transform.parent = this.transform;
 
-        Vector2 direction = PlayerMovement.Instance.Direction;
+        direction = PlayerMovement.Instance.Direction;
         if (direction != Vector2.zero)
         {
             float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;

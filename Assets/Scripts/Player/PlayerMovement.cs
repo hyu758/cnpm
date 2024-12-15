@@ -30,6 +30,8 @@ public class PlayerMovement : MonoBehaviour
     private PlayerInputAction playerControls;
     private Vector2 direction;
     public Vector2 Direction => direction;
+    private Vector2 signDirection;
+    public Vector2 SignDirection => signDirection;
 
     void Awake()
     {
@@ -61,10 +63,18 @@ public class PlayerMovement : MonoBehaviour
 
     private void PlayerInput()
     {
-        direction = playerControls.Movement.Move.ReadValue<Vector2>().normalized;
+        if (playerControls.Movement.Move.ReadValue<Vector2>().normalized != Vector2.zero)
+        {
+            direction = playerControls.Movement.Move.ReadValue<Vector2>().normalized;
+            isMoving = true;
+        }
+        else
+        {
+            isMoving = false;
+        }
+
         animator.SetFloat("XDir", direction.x);
         animator.SetFloat("YDir", direction.y);
-        isMoving = (direction.x != 0 || direction.y != 0);
 
         if (isMoving)
         {
@@ -79,6 +89,10 @@ public class PlayerMovement : MonoBehaviour
 
     private void Move()
     {
+        if (!isMoving)
+        {
+            return;
+        }
         rb.MovePosition(rb.position + direction * (speed * Time.fixedDeltaTime));
     }
     public void ChangeSpeed(float newSpeed)
