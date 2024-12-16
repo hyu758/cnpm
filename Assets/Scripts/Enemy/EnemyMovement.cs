@@ -99,18 +99,26 @@ public class EnemyMovement : MonoBehaviour
     {
         timer += Time.deltaTime;
 
-        if(!isNeedingToUpdate()) return;
-        if (IsChasing() || (lineSign.collider?.CompareTag("Bullet") ?? false))
+        if (IsChasing() 
+            || (lineSign.collider!=null && lineSign.collider.CompareTag("Bullet"))
+            )
         {
             if (enemyType == EnemyType.Range)
             {
+                // Debug.Log(IsChasing() + " ||| " + lineSign.collider?.tag + " speed " + speed);
                 speed = 0f;
             }
             
             return;
         }
-
         speed = defaultSpeed;
+        if(!isNeedingToUpdate()) return;
+
+        // if (enemyType == EnemyType.Range)
+        // {
+        //     Debug.Log(IsChasing() + " | out | " + lineSign.collider?.tag + " speed " + speed);
+        // }
+
         if (timer <= timePerUpdateDirection) return;
 
         fordable = new List<Vector2>();
