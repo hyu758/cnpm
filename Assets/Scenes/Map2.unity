@@ -15701,8 +15701,8 @@ MonoBehaviour:
     skillObject: {fileID: 996529139}
   restTime: 2
   currentAction: 0
-  HP: 50
-  maxHP: 50
+  HP: 80
+  maxHP: 80
 --- !u!50 &1518765393
 Rigidbody2D:
   serializedVersion: 4
