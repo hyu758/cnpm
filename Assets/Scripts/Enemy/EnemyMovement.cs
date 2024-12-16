@@ -24,7 +24,7 @@ public class EnemyMovement : MonoBehaviour
     [FormerlySerializedAs("layerMask")] public int enemyLayerMask = ~(1 << 7);
 
     [SerializeField] public Vector2 direction = Vector2.up;
-    private float speed;
+    [SerializeField] public float speed;
     
     private List<Vector2> fordable = new List<Vector2>();
 
@@ -43,7 +43,7 @@ public class EnemyMovement : MonoBehaviour
     protected bool isFlickering = false;
 
     private EnemyType enemyType;
-    private float defaultSpeed;
+    [SerializeField] public float defaultSpeed;
 
     private float attackRange;
     
