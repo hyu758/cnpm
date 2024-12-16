@@ -14,8 +14,6 @@ public class DarkExcalibur : MonoBehaviour
     {
         if (Input.GetKeyDown(inputKey) && PlayerStatus.Instance.Weapons[Item.DarkExcalibur] > 0)
         {
-            //Debug.Log(PlayerStatus.Instance.Weapons[Item.DarkExcalibur]);
-            Debug.Log("Attack by DarkExca");
             DarkExcaliburAttack();
             PlayerStatus.Instance.RemoveWeaponQuantity(Item.DarkExcalibur, 1);
         }
@@ -24,8 +22,6 @@ public class DarkExcalibur : MonoBehaviour
     void DarkExcaliburAttack()
     {
         GameObject darkExca = Instantiate(finalSparkPrefab, this.transform.position, this.transform.rotation);
-        //darkExca.transform.parent = this.transform;
-
         Vector2 direction = PlayerMovement.Instance.Direction;
         if (direction != Vector2.zero)
         {

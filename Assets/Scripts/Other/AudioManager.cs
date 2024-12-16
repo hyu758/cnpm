@@ -41,6 +41,7 @@ public class AudioManager : MonoBehaviour
     void Start()
     {
         BGMusic.clip = Background;
+        BGMusic.loop = true;
         BGMusic.Play();
     }
 
