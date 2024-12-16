@@ -160,7 +160,6 @@ public class EnemyMovement : MonoBehaviour
     private bool IsChasing()
     {
         if (lineSign.collider == null) return false;
-        Debug.Log(lineSign.collider.tag);
         if (lineSign.collider.CompareTag("Player"))
         {
             return true;

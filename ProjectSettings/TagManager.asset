@@ -55,9 +55,6 @@ TagManager:
   - name: OnTheGround
     uniqueID: 589036027
     locked: 0
-  - name: Box
-    uniqueID: 2488813371
-    locked: 0
   - name: Exploding
     uniqueID: 2433222975
     locked: 0
@@ -69,6 +66,9 @@ TagManager:
     locked: 0
   - name: Item
     uniqueID: 589967363
+    locked: 0
+  - name: Box
+    uniqueID: 2488813371
     locked: 0
   - name: Player
     uniqueID: 1188604481

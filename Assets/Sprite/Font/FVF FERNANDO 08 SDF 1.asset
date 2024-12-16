@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 71c1514a6bd24e1e882cebbe1904ce04, type: 3}
-  m_Name: FVF FERNANDO 08 SDF
+  m_Name: FVF FERNANDO 08 SDF 1
   m_EditorClassIdentifier: 
-  hashCode: -1783067340
+  hashCode: -435116507
   material: {fileID: 4558404236107366}
-  materialHashCode: 1002448276
+  materialHashCode: -883901979
   m_Version: 1.1.0
   m_SourceFontFileGUID: 02d52d1940d0cc1489b6f80b7a56d74f
   m_SourceFontFile_EditorRef: {fileID: 12800000, guid: 02d52d1940d0cc1489b6f80b7a56d74f, type: 3}
@@ -1646,8 +1646,7 @@ Material:
   m_Shader: {fileID: 4800000, guid: 68e6db2ebdc24f95958faec2be5558d6, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
-  m_ValidKeywords:
-  - GLOW_ON
+  m_ValidKeywords: []
   m_InvalidKeywords: []
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
