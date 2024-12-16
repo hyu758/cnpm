@@ -457,7 +457,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Elemetal Powder
+  m_text: Elemental Powder
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: b6778f88474734747bb4d83decc96f3c, type: 2}
   m_sharedMaterial: {fileID: 4558404236107366, guid: b6778f88474734747bb4d83decc96f3c, type: 2}
@@ -520,7 +520,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -282.91357, y: 0, z: -335.19284, w: 83.62631}
+  m_margin: {x: -282.91357, y: 0, z: -351.0316, w: 83.62631}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0

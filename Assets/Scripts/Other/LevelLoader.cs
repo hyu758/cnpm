@@ -6,8 +6,9 @@ public class LevelLoader : MonoBehaviour
 {
     private static LevelLoader instance;
     public static LevelLoader Instance => instance;
-    
+
     [SerializeField] private Animator animator;
+
     void Awake()
     {
         if (instance != null && instance != this)
@@ -15,14 +16,16 @@ public class LevelLoader : MonoBehaviour
             Destroy(this.gameObject);
             return;
         }
+
         instance = this;
-        
-        
+        StartCoroutine(waitForLoading());
+
     }
 
     // Update is called once per frame
     public void LoadNextScene()
     {
+        this.gameObject.SetActive(true);
         animator.SetTrigger("Start");
     }
 
@@ -30,4 +33,10 @@ public class LevelLoader : MonoBehaviour
     {
         this.gameObject.SetActive(false);
     }
+
+    IEnumerator waitForLoading(){
+        yield return new WaitForSeconds(1f);
+        SetNotActive();
+    }
+
 }
